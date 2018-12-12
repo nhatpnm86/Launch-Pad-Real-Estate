@@ -1,98 +1,156 @@
-Welcome to the AWS CodeStar sample web application
-==================================================
 
-This sample code helps get you started with a simple Node.js web application
-deployed by AWS Elastic Beanstalk and AWS CloudFormation.
+A boilerplate for react frontend projects.
 
-What's Here
------------
+> Git Repo: https://github.com/deakin-launchpad/deakin-frontend-boilerplate.git
 
-This sample includes:
+## Table of Contents
 
-* README.md - this file
-* .ebextensions/ - this directory contains the configuration files that
-  AWS Elastic Beanstalk will deploy your Express application
-* package.json - this file contains various metadata relevant to your Node.js
-  application such as dependencies
-* server.js - this file contains the code for your application
-* public/ - this directory contains static web assets used by your application
-* tests/ - this directory contains unit tests for your application
-* template.yml - this file contains the description of AWS resources used by AWS
-  CloudFormation to deploy your infrastructure
-* template-configuration.json - this file contains the project ARN with placeholders used for tagging resources with the project ID  
+ - Getting started
+ - Installation
+ - Available scripts
+ - Usage
+ - Component
+ - Support
+ - Learn More
 
+## Getting started
 
-Getting Started
----------------
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
 
-These directions assume you want to develop on your local computer, and not
-from the Amazon EC2 instance itself. If you're on the Amazon EC2 instance, the
-virtual environment is already set up for you, and you can start working on the
-code.
+## Installation
 
-To work on the sample code, you'll need to clone your project's repository to your
-local computer. If you haven't, do that first. You can find instructions in the
-AWS CodeStar user guide.
+### Install Node
 
-1. Install Node.js on your computer.  For details on available installers visit
-   https://nodejs.org/en/download/.
+Before setting up, [Install](https://nodejs.org/en/download/) nodeJS or run below script on your terminal to check node version on your machine.
 
-2. Install NPM dependencies:
+    node -v
 
-        $ npm install
+### Clone repository
 
-3. Start the development server:
+    git clone https://github.com/deakin-launchpad/deakin-frontend-boilerplate.git
 
-        $ node app.js
+and then change directory,
 
-4. Open http://127.0.0.1:3000/ in a web browser to view your application.
+    cd ./deakin-frontend-boilerplate
 
-What Do I Do Next?
-------------------
+## Available scripts
 
-Once you have a virtual environment running, you can start making changes to
-the sample Node.js web application. We suggest making a small change to
-/public/index.html first, so you can see how changes pushed to
-your project's repository are automatically picked up and,deployed to the Amazon EC2
-instance by AWS Elastic Beanstalk. (You can watch the progress on your project dashboard.)
-Once you've seen how that works, start developing your own code, and have fun!
+In the project directory, you can run:
 
-To run your tests locally, go to the root directory of the
-sample code and run the `npm test` command, which
-AWS CodeBuild also runs through your `buildspec.yml` file.
+### `npm install`
 
-To test your new code during the release process, modify the existing tests or
-add tests to the tests directory. AWS CodeBuild will run the tests during the
-build stage of your project pipeline. You can find the test results
-in the AWS CodeBuild console.
+This will install all the packages listed in `package-lock.json`. Whenever you update your package files, make sure you run this command again. For more info about this command, run `npm install --help`.
 
-Learn more about AWS CodeBuild and how it builds and tests your application here:
-https://docs.aws.amazon.com/codebuild/latest/userguide/concepts.html
+### `npm start`
 
-Learn more about AWS CodeStar by reading the user guide.  Ask questions or make
-suggestions on our forum.
+Runs the app in the development mode.  
+Open  [http://localhost:3000](http://localhost:3000/)  to view it in the browser.
 
-User Guide: http://docs.aws.amazon.com/codestar/latest/userguide/welcome.html
+The page will reload when you make edits and save them.  
+You will also be able to see any lint errors in the console.
 
-Forum: https://forums.aws.amazon.com/forum.jspa?forumID=248
+### `npm test`
 
-How Do I Add Template Resources to My Project?
-------------------
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-To add AWS resources to your project, you'll need to edit the `template.yml`
-file in your project's repository. You may also need to modify permissions for
-your project's worker roles. After you push the template change, AWS CodeStar
-and AWS CloudFormation provision the resources for you.
+### `npm run build`
 
-See the AWS CodeStar user guide for instructions to modify your template:
-https://docs.aws.amazon.com/codestar/latest/userguide/how-to-change-project#customize-project-template.html
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-What Should I Do Before Running My Project in Production?
-------------------
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
 
-AWS recommends you review the security best practices recommended by the framework
-author of your selected sample application before running it in production. You
-should also regularly review and apply any available patches or associated security
-advisories for dependencies used within your application.
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-Best Practices: https://docs.aws.amazon.com/codestar/latest/userguide/best-practices.html?icmpid=docs_acs_rm_sec
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Usage
+
+### Redux
+
+[Redux](https://redux.js.org) is state management tool. We shall be using Redux to manage atleast the user login state across the application. 
+**Note**- Due to redux's complexity, you don't need to understand redux in the initial stage.
+
+### Axios
+
+[Axios](https://github.com/axios/axios) is a promise based HTTP client for the browser and node.js.
+
+### Types of login
+
+There are 2 types of logins in boilerplate, both use redux and axios:
+
+ 1. **File -- App.js**: `accessTokenLogin()`
+    Params: token stored in local storage reterived from app helper
+
+    Returns: Response from server
+        
+2.  **File -- login.jsx**: `dispatchLogin()`
+    Parmas: data{username, password}
+
+    Returns: Response from server
+
+## Files
+
+Most of these files will not have to be touched/understood by you. Nevertheless, this quick guide will help out the curious souls.
+
+### Configuration/miscellaneous files
+
+#### .gitignore
+Used to add files and folders which should not be tracked by the project's git repository. The file accepts regular expressions which might be tricky to understand.
+
+#### .env(.development|production|staging|test)(.local)
+Environment variable files can be used to set up variables for different environments like development, testing, production, etc. Files ending with a `.local` extension are supposed to be for individual use and are hence not committed in the git. Other files like `.env`, `.env.development`, etc help setup the application to be environment ready for different use-cases! 
+
+**Note: NEVER store sensitive information like passwords, access-tokens, API keys, port numbers, etc in an environment file which doesn't end with `.local`.**
+
+ #### jsconfig.json
+ Used to help VSCode utilise intelliSense (auto-complete, suggestions, etc) for the project which gets suppressed due to setting `NODE_PATH=src` in `.env` file.
+
+#### .editorconfig
+EditorConfig is used to help developers define and maintain consistent coding styles between different editors and IDEs. 
+ 
+ ### Helper files
+ These are the files you will interact with quite frequently if you're working on the front-end. At the moment, we have 2 helper files:
+ 
+ #### api.js
+ All the API related calls go in this file, except the ones which are fired using redux actions, for instance, `accessTokenLogin()` and `dispatchLogin()`.
+
+#### AppHelper.js
+At this stage, this file only helps with storing data in browser's [local storage](https://www.w3schools.com/jsref/prop_win_localstorage.asp).
+ 
+ ### index.js
+
+This file is used as the entry point of the front-end application and is hence used to initialise the `App.js` as well as import, initialise and export necessary modules and variables.
+
+### App.js
+
+Our goal with the boilerplate is to standardise the design of the apps we create. Nevertheless, the design can change tremendously according to product/client requirements. The actual layout begins in the `App.js` file.
+
+The standardised app structure is divided into 3 parts:
+ - **Header**: This component shall have navigation, title and logout button.
+ - **Main**: The main body of the application.
+ - **Footer**: The footer shall contain details about website and links.
+
+## SASS
+
+The boilerplate contains [SASS](https://sass-lang.com/guide) package where colors and fonts pre-defined variables are defined to use.
+
+## Learn More
+
+You can learn more in the  [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the  [React documentation](https://reactjs.org/).
+
+## End notes
+
+Please [open an issue](https://github.com/deakin-launchpad/deakin-react-cloud/issues/new) or send a PR if you find something worth fixing. This document and the boilerplate shall be upgraded timely according to requirements. Please don't hesitate to contact Nirav/Akash to help make this document better.
